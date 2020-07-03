@@ -7484,8 +7484,7 @@ var EventBase = /*#__PURE__*/function () {
         // and try to process the drag event
         // else we shouldn't prevent default of the event and ignore processing the drag event
 
-        // 1. 纵向滑动页面时 图表图形不移动
-        if (isVertDrag && !isHorzDrag) {
+        if (!isVertDrag && !isHorzDrag) {
           this._preventDragProcess = true;
         }
       }
