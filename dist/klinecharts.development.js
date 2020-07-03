@@ -7295,7 +7295,11 @@ function isTouchEvent(event) {
   return Boolean(event.touches);
 }
 
-function preventDefault(event) {
+function preventDefault(event, type) {
+  if (type === 'specical') {
+    return;
+  }
+
   if (event.cancelable) {
     event.preventDefault();
   }
@@ -7497,6 +7501,12 @@ var EventBase = /*#__PURE__*/function () {
 
       if (!this._preventDragProcess) {
         this._processEvent(compatEvent, this._handler.pressedMouseMoveEvent); // we should prevent default in case of touch only
+        // to prevent scroll of the page
+
+
+        if (isTouch) {
+          preventDefault(moveEvent, 'specical');
+        }
       }
     }
   }, {
