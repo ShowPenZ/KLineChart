@@ -218,8 +218,7 @@ export default class EventBase {
       // and try to process the drag event
       // else we shouldn't prevent default of the event and ignore processing the drag event
 
-      // 1.纵向滑动时图表图形不移动  !isVertDrag ===> isVertDrag
-      if (isVertDrag && !isHorzDrag) {
+      if (!isVertDrag && !isHorzDrag) {
         this._preventDragProcess = true;
       }
     }
