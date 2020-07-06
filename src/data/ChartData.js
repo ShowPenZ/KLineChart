@@ -683,20 +683,21 @@ export default class ChartData {
   calcTechnicalIndicator(pane) {
     Promise.resolve().then((_) => {
       const technicalIndicator = pane.technicalIndicator();
-      if (technicalIndicator) {
+      if (
+        technicalIndicator &&
+        this._technicalIndicators[technicalIndicator.name]
+      ) {
         const { calcParams, precision } = this._technicalIndicators[
           technicalIndicator.name
         ];
 
-        if (calcParams) {
-          technicalIndicator.setPrecision(precision);
-          technicalIndicator.setCalcParams(calcParams);
-          technicalIndicator.result =
-            technicalIndicator.calcTechnicalIndicator(
-              this._dataList,
-              technicalIndicator.calcParams
-            ) || [];
-        }
+        technicalIndicator.setPrecision(precision);
+        technicalIndicator.setCalcParams(calcParams);
+        technicalIndicator.result =
+          technicalIndicator.calcTechnicalIndicator(
+            this._dataList,
+            technicalIndicator.calcParams
+          ) || [];
       }
       pane.invalidate(InvalidateLevel.FULL);
     });
