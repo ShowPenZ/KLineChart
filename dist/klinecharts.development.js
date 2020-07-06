@@ -3886,9 +3886,12 @@ var ChartData = /*#__PURE__*/function () {
           var _this2$_technicalIndi = _this2._technicalIndicators[technicalIndicator.name],
               calcParams = _this2$_technicalIndi.calcParams,
               precision = _this2$_technicalIndi.precision;
-          technicalIndicator.setPrecision(precision);
-          technicalIndicator.setCalcParams(calcParams);
-          technicalIndicator.result = technicalIndicator.calcTechnicalIndicator(_this2._dataList, technicalIndicator.calcParams) || [];
+
+          if (calcParams) {
+            technicalIndicator.setPrecision(precision);
+            technicalIndicator.setCalcParams(calcParams);
+            technicalIndicator.result = technicalIndicator.calcTechnicalIndicator(_this2._dataList, technicalIndicator.calcParams) || [];
+          }
         }
 
         pane.invalidate(InvalidateLevel.FULL);
