@@ -5210,8 +5210,8 @@ var TechnicalIndicatorFloatLayerView = /*#__PURE__*/function (_View) {
       for (var i = 0; i < valueSize; i++) {
         var value = values[i].value;
 
-        if (plots[i].type === PlotType.LINE) {
-          if (isValid(value)) {
+        if (isValid(value)) {
+          if (plots[i].type === PlotType.LINE) {
             this._ctx.fillStyle = colors[lineCount % colorSize];
 
             this._ctx.beginPath();
